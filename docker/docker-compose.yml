@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_host
+    environment:
+      POSTGRES_DATABASE: test_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      TZ: 'Asia/Tokyo'
+    # command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+    - ./docker/db/data:/var/lib/postgres
+    - ./docker/db/my.cnf:/etc/postgres/conf.d/my.cnf
+    - ./docker/db/sql:/docker-entrypoint-initdb.d
+    - ./docker/db/db:/var/lib/postgres/data
+    ports:
+    - 5306:5306
