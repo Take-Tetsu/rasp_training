@@ -16,4 +16,4 @@ services:
     - ./docker/db/my.cnf:/etc/postgres/conf.d/my.cnf
     - ./docker/db/sql:/docker-entrypoint-initdb.d
     ports:
-    - 5306:5306
+    - 5432:5432
