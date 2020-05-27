@@ -1,12 +1,12 @@
+CREATE DATABASE datapool;
+
 BEGIN;
 
 SET client_encoding = 'UTF8';
 
-CREATE DATABASE datapool;
-
 CREATE TABLE acc_data (
     id serial NOT NULL,
-    user integer NOT NULL,
+    user_id integer NOT NULL,
     logdate date,
     logtime time,
     acc_x integer,
@@ -20,3 +20,4 @@ CREATE TABLE acc_data (
 );
 
 COMMIT;
+ANALYZE acc_data;
