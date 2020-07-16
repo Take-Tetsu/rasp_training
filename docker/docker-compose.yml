@@ -3,13 +3,13 @@ version: '3'
 services:
   db:
     image: postgres:latest
-    container_name: postgres_host
+    container_name: postgres
     environment:
-      POSTGRES_DATABASE: test_database
+      POSTGRES_DB: datapool
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_ROOT_PASSWORD: postgres
       TZ: 'Asia/Tokyo'
-    # command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
     - ./docker/db/db:/var/lib/postgres/data
     - ./docker/db/data:/var/lib/postgres

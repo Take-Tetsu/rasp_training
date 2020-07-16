@@ -1,23 +1,24 @@
-CREATE DATABASE datapool;
-
 BEGIN;
 
-SET client_encoding = 'UTF8';
+SET client_encoding='UTF8';
+
+CREATE TABLE user_data (
+    user_id integer primary key GENERATED ALWAYS AS IDENTITY,
+    user_name text
+);
 
 CREATE TABLE acc_data (
-    id serial NOT NULL,
+    log_id integer primary key GENERATED ALWAYS AS IDENTITY,
     user_id integer NOT NULL,
-    logdate date,
-    logtime time,
+    log_date date,
+    log_time time,
     acc_x integer,
     acc_y integer,
     acc_z integer,
     gyr_x integer,
     gyr_y integer,
     gyr_z integer,
-    PRIMARY KEY(id),
-    UNIQUE(id)
+    FOREIGN KEY (user_id) REFERENCES user_data
 );
 
 COMMIT;
-ANALYZE acc_data;
